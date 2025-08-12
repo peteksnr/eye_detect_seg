@@ -1,0 +1,11 @@
+
+train: /Users/peteksener/Desktop/Archive/train
+val: /Users/peteksener/Desktop/Archive/val
+
+
+names:
+  0: eye
+
+
+  
+
