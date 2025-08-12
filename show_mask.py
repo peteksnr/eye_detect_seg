@@ -8,8 +8,8 @@ from sklearn.metrics import f1_score
 import torch
 
 
-image_path = "/Users/peteksener/Desktop/t/img/010_07_eye1_jpg.rf.4f1ae532c317067656c7fc14c1107079__4.jpg"
-mask_path = "/Users/peteksener/Desktop/t/mask/010_07_eye1_jpg.rf.4f1ae532c317067656c7fc14c1107079__4.png"
+image_path = "path/to/image"
+mask_path = "path/to/mask"
 
 image = cv2.imread(image_path)
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -25,7 +25,7 @@ for class_id, color in color_map.items():
     color_mask[mask == class_id] = color
 
 
-predict = Predict_Segmentation(model_path='/Users/peteksener/Desktop/y/iris_seg_pre.pth')
+predict = Predict_Segmentation(model_path='/path/to/segmentation/model')
 image, tensor = predict.preprocess_image(image_path)
 mask_pred = predict.predict_mask(predict.model, tensor)
 
@@ -68,5 +68,4 @@ def calculate_metrics(img, masks, model):
         return loss, f1, iou
 
 loss, f1, iou = calculate_metrics(tensor, mask_tensor, predict.model)
-# predict.visualize_segmentation(overlay, image, mask_pred)
 predict.visualize_segment(color_mask, image, mask_pred, loss, f1, iou)
