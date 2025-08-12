@@ -7,11 +7,11 @@ from sklearn.metrics import f1_score
 import torch
 
 data = Load_Data()
-
-train_images_dir = "/Users/peteksener/Desktop/t/img"
-train_masks_dir = "/Users/peteksener/Desktop/t/mask"
-val_images = "/Users/peteksener/Desktop/v/img"
-val_masks = "/Users/peteksener/Desktop/v/mask"
+# replace paths
+train_images_dir = "path/to/train/images"
+train_masks_dir = "path/to/train/masks"
+val_images = "path/to/val/images"
+val_masks = "path/to/val/masks"
 
 train_dataset = data.get_dataset(train_images_dir, train_masks_dir, transform=data.image_transform)
 train_dataloader = DataLoader(train_dataset, batch_size=8, shuffle=True)
@@ -19,14 +19,13 @@ train_dataloader = DataLoader(train_dataset, batch_size=8, shuffle=True)
 val_dataset = data.get_dataset(val_images, val_masks, transform=data.image_transform)
 val_dataloader = DataLoader(val_dataset, batch_size=8, shuffle=False)
 
-#resnet152 densenet161 efficientnet-b3 inceptionresnetv2
 model = smp.Unet(
     encoder="resnet152",
     encoder_weights=None,
     in_channels=3,
     classes=1
 )
-model.load_state_dict(torch.load('/Users/peteksener/Desktop/y/iris_resnet34.pth', map_location=torch.device('mps')), strict=False)
+model.load_state_dict(torch.load('/path/to/segmentation/model', map_location=torch.device('mps')), strict=False) # replace path
 device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 model.to(device)
 
