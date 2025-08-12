@@ -1,6 +1,6 @@
 
-train: /Users/peteksener/Desktop/Archive/train
-val: /Users/peteksener/Desktop/Archive/val
+train: /path/to/train/images
+val: /path/to/va/images
 
 
 names:
