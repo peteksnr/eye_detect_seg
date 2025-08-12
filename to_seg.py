@@ -9,7 +9,7 @@ class_mapping = {
     "pupil": 12  
 }
 
-with open("/Users/peteksener/Downloads/iris_Seg-2/train/_annotations.coco.json", "r") as f:
+with open("path/to/yolo/annotations/file", "r") as f:
     coco_data = json.load(f)
 
 for image_info in coco_data["images"]:
@@ -32,7 +32,7 @@ for image_info in coco_data["images"]:
         for segment in segmentation:
             pts = np.array(segment, np.int32).reshape((-1, 2))
             cv2.fillPoly(mask_img, [pts], pixel_value)
-    
-    mask_path = f"/Users/peteksener/Downloads/iris_Seg-2/train_mask/{file_name}"
+    # replace path
+    mask_path = f"/path/to/train/masks/folder/{file_name}"
     Image.fromarray(mask_img).save(mask_path)
     print(f"Saved mask: {mask_path}")
