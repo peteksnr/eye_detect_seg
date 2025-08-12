@@ -16,10 +16,10 @@ perspective = 0.0
 fliplr = 0.5  
  
 
-image_dir = '/Users/peteksener/Desktop/v/i'
-mask_dir = '/Users/peteksener/Desktop/v/m'
-output_image_dir = '/Users/peteksener/Desktop/untitled folder 2/i'
-output_mask_dir = '/Users/peteksener/Desktop/untitled folder 2/m'
+image_dir = 'path/to/images'
+mask_dir = 'path/to/masks'
+output_image_dir = 'path/to/output/images'
+output_mask_dir = 'path/to/output/masks'
 
 
 transform = A.Compose([
@@ -27,7 +27,6 @@ transform = A.Compose([
     A.RandomBrightnessContrast(brightness_limit=brightness_limit, contrast_limit=contrast_limit, p=0.4),
     A.HueSaturationValue(hue_shift_limit=hsv_h, sat_shift_limit=hsv_s, val_shift_limit=hsv_v, p=0.4),
     A.Rotate(limit=degrees, p=0.5),  
-    # A.ShiftScaleRotate(shift_limit=translate, scale_limit=scale, rotate_limit=degrees, p=0.5),
     A.Affine(scale=1.2, shear=shear, p=0.3),  
 ])
 
