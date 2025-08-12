@@ -1,8 +1,8 @@
 import os
 import cv2
 
-input_dir = "/Users/peteksener/Desktop/eyes"
-output_dir = "/Users/peteksener/Desktop/w"
+input_dir = "path/to/input/images"
+output_dir = "path/to/output/images"
 
 os.makedirs(output_dir, exist_ok=True)
 
@@ -26,7 +26,7 @@ def read_yolo_annotations(anno_path, img_width, img_height):
 for file_name in os.listdir(input_dir):
     if file_name.endswith((".jpg", ".png")): 
         img_path = os.path.join(input_dir, file_name)
-        anno_path = os.path.join('/Users/peteksener/Desktop/s2/eyedetect/images', file_name.replace(".jpg", ".txt").replace(".png", ".txt"))
+        anno_path = os.path.join('path/to/detected/eye/images', file_name.replace(".jpg", ".txt").replace(".png", ".txt"))
 
         if not os.path.exists(anno_path):
             print(f"Warning: Annotation file missing for {file_name}")
